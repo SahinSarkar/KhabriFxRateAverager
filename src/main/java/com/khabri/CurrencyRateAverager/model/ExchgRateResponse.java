@@ -1,17 +1,19 @@
 package com.khabri.CurrencyRateAverager.model;
 
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class AverageRateResponse {
+//@RedisHash
+public class ExchgRateResponse implements Serializable {
 
+	private static final long serialVersionUID = -2898232681655545927L;
 	private Date startDate;
 	private Date endDate;
 	private String baseCurrency;
-	private Map<String, Map<String, Integer>> avgCurrencyExchangeRates;
+	private Map<String, Map<String, Double>> avgCurrencyExchangeRates;
 
 	@JsonProperty("start_at")
 	public Date getStartDate() {
@@ -32,11 +34,11 @@ public class AverageRateResponse {
 	}
 
 	@JsonProperty("rates")
-	public Map<String, Map<String, Integer>> getAvgCurrencyExchangeRates() {
+	public Map<String, Map<String, Double>> getAvgCurrencyExchangeRates() {
 		return avgCurrencyExchangeRates;
 	}
 
-	public void setAvgCurrencyExchangeRates(Map<String, Map<String, Integer>> avgCurrencyExchangeRates) {
+	public void setAvgCurrencyExchangeRates(Map<String, Map<String, Double>> avgCurrencyExchangeRates) {
 		this.avgCurrencyExchangeRates = avgCurrencyExchangeRates;
 	}
 
@@ -51,7 +53,7 @@ public class AverageRateResponse {
 
 	@Override
 	public String toString() {
-		return "AverageRateResponse [startDate=" + startDate + ", endDate=" + endDate + ", baseCurrency=" + baseCurrency
+		return "ExchgRateResponse [startDate=" + startDate + ", endDate=" + endDate + ", baseCurrency=" + baseCurrency
 				+ ", avgCurrencyExchangeRates=" + avgCurrencyExchangeRates + "]";
 	}
 
